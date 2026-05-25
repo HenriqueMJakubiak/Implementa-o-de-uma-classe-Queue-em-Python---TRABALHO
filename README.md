@@ -1,70 +1,78 @@
-# Estrutura de Dados — Fila de Espera (FIFO)
+# Estrutura de Dados — Pilha Dinâmica (LIFO)
 
-Este repositório apresenta a implementação manual de uma **Fila (First In, First Out)** em Python,
-sem uso de bibliotecas externas. O arquivo principal já inclui uma suíte de testes integrada que
-cobre tanto o fluxo normal de uso quanto situações de erro controladas.
+Este repositório apresenta a implementação manual de uma **Pilha (Last In, First Out)** em Python, sem utilização de bibliotecas externas. O arquivo principal já possui uma suíte de testes integrada, validando tanto operações comuns quanto situações de erro previstas durante o uso da estrutura.
 
-## Como Executar
+---
 
-### Pré-requisitos
+# Como Executar
 
-Certifique-se de ter o **Python 3.x** instalado em sua máquina.  
-Para verificar, rode no terminal:
+## Pré-requisitos
+
+Certifique-se de possuir o Python 3.x instalado em sua máquina.  
+Para verificar, execute no terminal:
 
 ```bash
 python --version
 ```
 
-### Executando o Programa
+## Executando o Programa
 
-Navegue até a pasta do projeto e execute:
+Acesse a pasta do projeto e rode:
 
 ```bash
-python fila_espera.py
+python pilha_dinamica.py
 ```
 
-A saída exibirá quatro blocos de teste numerados, confirmando o comportamento esperado
-da estrutura em cada cenário.
+Ao executar, o programa exibirá quatro blocos de teste numerados, demonstrando o funcionamento correto da pilha em diferentes cenários.
 
 ---
 
-## Estrutura da Classe `FilaEspera`
+# Estrutura da Classe `PilhaDinamica`
 
 | Método | Descrição |
 |---|---|
-| `__init__(capacidade)` | Inicializa a fila. `capacidade=None` significa sem limite. |
-| `inserir(elemento)` | Adiciona um elemento ao final da fila. |
-| `remover()` | Remove e retorna o elemento da frente (ordem FIFO). |
-| `frente()` | Consulta o próximo elemento sem removê-lo. |
-| `esta_vazia()` | Retorna `True` se não houver elementos na fila. |
-| `esta_cheia()` | Retorna `True` se a capacidade máxima foi atingida. |
-| `total()` | Retorna a quantidade atual de elementos. |
-| `esvaziar()` | Remove todos os elementos de uma vez. |
+| `__init__(capacidade)` | Inicializa a pilha. `capacidade=None` define pilha sem limite. |
+| `empilhar(elemento)` | Adiciona um elemento ao topo da pilha. |
+| `desempilhar()` | Remove e retorna o elemento do topo (ordem LIFO). |
+| `topo()` | Consulta o elemento do topo sem removê-lo. |
+| `esta_vazia()` | Retorna `True` caso a pilha esteja vazia. |
+| `esta_cheia()` | Retorna `True` quando a capacidade máxima for atingida. |
+| `quantidade()` | Retorna o total atual de elementos armazenados. |
+| `limpar()` | Remove todos os elementos da pilha. |
 
 ---
 
-## Cenários de Teste
+# Cenários de Teste
 
-O bloco `if __name__ == "__main__"` cobre os seguintes casos:
+O bloco `if __name__ == "__main__"` contempla os seguintes casos:
 
-- **Teste 1** — Inserção, consulta e remoção em fila sem limite de capacidade.
-- **Teste 2** — Esvaziamento completo da fila via `esvaziar()`.
-- **Teste 3** — Tentativa de `remover()` e `frente()` em fila vazia → captura de `IndexError`.
-- **Teste 4** — Tentativa de inserção em fila com capacidade esgotada → captura de `OverflowError`.
+## Teste 1 — Empilhamento e remoção
+
+Inserção de elementos, consulta do topo e remoção seguindo a lógica LIFO.
+
+## Teste 2 — Limpeza completa da pilha
+
+Utilização do método `limpar()` para remover todos os elementos de uma única vez.
+
+## Teste 3 — Operações em pilha vazia
+
+Tentativa de executar `desempilhar()` e `topo()` em uma pilha sem elementos → captura de `IndexError`.
+
+## Teste 4 — Limite de capacidade
+
+Tentativa de inserir novos elementos em uma pilha já cheia → captura de `OverflowError`.
 
 ---
 
-## Tratamento de Erros
+# Tratamento de Erros
 
 | Situação | Exceção Lançada |
 |---|---|
-| Remover ou consultar elemento de fila vazia | `IndexError` |
-| Inserir elemento em fila já no limite | `OverflowError` |
+| Remover ou consultar elemento de pilha vazia | `IndexError` |
+| Inserir elemento em pilha com capacidade máxima | `OverflowError` |
 
 ---
 
-## Princípio de Funcionamento
+# Princípio de Funcionamento
 
-A fila segue o princípio **FIFO**: o primeiro elemento inserido é sempre o primeiro a ser removido.
-Isso garante ordem justa de processamento, amplamente utilizada em sistemas de atendimento,
-filas de impressão e escalonamento de processos.
+A pilha segue o conceito **LIFO (Last In, First Out)**, onde o último elemento inserido será sempre o primeiro a ser removido. Esse comportamento é amplamente utilizado em sistemas de desfazer/refazer ações, controle de chamadas de funções, gerenciamento de memória e navegação entre páginas.
